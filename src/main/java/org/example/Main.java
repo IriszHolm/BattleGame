@@ -15,31 +15,26 @@ public class Main {
         boolean gameEnded = false;
 
         while (!gameEnded) {
-            //counter = (int) Math.random() * 2;
-            System.out.println("counter " + counter);
 
             if ((counter % 2) == 0) {
-                System.out.println(player.getName() + " " + player.getHitPoints());
-                System.out.println(goblin.getName() + " " + goblin.getHitPoints());
+                //System.out.println(player.getName() + " " + player.getHitPoints());
+                //System.out.println(goblin.getName() + " " + goblin.getHitPoints());
 
                 player.setHitPoints(player.Damage());
 
-                System.out.println(goblin.getName() + " hit " +
-                        player.getName() + ", " + player.getName() + " have " +
-                        player.getHitPoints() + " lives left");
-
+                System.out.println(goblin.getName() + " hits " +
+                        player.getName() + ", for 20HP Damage, " + player.getName() + " have " +
+                        player.getHitPoints() + "HP left");
             }
             if (counter % 2 == 1) {
-                System.out.println(player.getName() + " " + player.getHitPoints());
-                System.out.println(goblin.getName() + " " + goblin.getHitPoints());
+                //System.out.println(player.getName() + " " + player.getHitPoints());
+                //System.out.println(goblin.getName() + " " + goblin.getHitPoints());
 
                 goblin.setHitPoints(goblin.Damage());
 
-                System.out.println(player.getName() + " hits " +
-                        goblin.getName() + ", " + goblin.getName() + " have " +
-                        goblin.getHitPoints() + " lives left");
-
-
+                System.out.println(player.getName() + " hit " +
+                        goblin.getName() + ", for 20HP Damage," + goblin.getName() + " has " +
+                        goblin.getHitPoints() + "HP left");
             }
             counter++;
 
