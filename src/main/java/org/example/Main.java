@@ -17,9 +17,6 @@ public class Main {
         while (!gameEnded) {
 
             if ((counter % 2) == 0) {
-                //System.out.println(player.getName() + " " + player.getHitPoints());
-                //System.out.println(goblin.getName() + " " + goblin.getHitPoints());
-
                 player.setHitPoints(player.Damage());
 
                 System.out.println(goblin.getName() + " hits " +
@@ -27,9 +24,6 @@ public class Main {
                         player.getHitPoints() + "HP left");
             }
             if (counter % 2 == 1) {
-                //System.out.println(player.getName() + " " + player.getHitPoints());
-                //System.out.println(goblin.getName() + " " + goblin.getHitPoints());
-
                 goblin.setHitPoints(goblin.Damage());
 
                 System.out.println(player.getName() + " hit " +
@@ -45,11 +39,9 @@ public class Main {
         if (gameEnded) {
             if (player.getHitPoints() == 0) {
                 System.out.println("Game had ended, Goblin won");
-
             } else {
                 System.out.println("Game had ended, Player won");
             }
-
         }
     }
         /*
@@ -69,7 +61,6 @@ public class Main {
                  if(player.getHitPoints() == 0 || goblin.getHitPoints() == 0 ){
                      break;
                  }
-
          */
 
 

@@ -1,7 +1,8 @@
 package org.example;
+import org.junit.jupiter.api.Test;
+
 
 public class GameCharacter {
-    //SuperKlass
 
     private String name;
     private int hitPoints;
@@ -23,4 +24,7 @@ public class GameCharacter {
         this.takeDamage = 20;
         return hitPoints - takeDamage;
     }
+
+
+
 }
