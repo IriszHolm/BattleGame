@@ -6,8 +6,6 @@ public class GameCharacter {
 
     private String name;
     private int hitPoints;
-    private int damage;
-    private int takeDamage = 0;
     public GameCharacter(String name, int hitPoints) {
         this.name = name;
         this.hitPoints = hitPoints;
@@ -20,10 +18,8 @@ public class GameCharacter {
     }
     public void setHitPoints(int hitPoints) {
         this.hitPoints = hitPoints;
-    } //Med denna kan man nu ändra hitPoints
-
+    }
     public int takeDamage(int damage) {
-        this.damage = damage;
         return hitPoints - damage;
     }
 

@@ -5,44 +5,52 @@ import java.util.Random;
 public class Main {
     public static void main(String[] args) {
 
-        System.out.println("A scary-looking Ghoul runs towards you. You decide to attack");
-
         GameCharacter player = new GameCharacter("Player", 100);
         GameCharacter goblin = new GameCharacter("Ghoul", 100);
-        //Jag ger båda 100 hitPoints, då har båda en chans att vinna.
-        //Om datorn har 50hp så får denne -10 i HP på slutet.
+        // I'll give both 100HP so that the chance of winning is equal
+        // If the computer has 50HP, its HP can end at -10HP, which doesn't look very good
 
-        // Den som får göra första attacken görs slumpmässigt.
+        // Whom does the first attack is decided randomly
         Random rand = new Random();
         int counter = rand.nextInt(2);
+
         boolean gameEnded = false;
         int round = 1;
 
+        // Battle Game begins
+        System.out.println("A scary-looking Ghoul runs towards you. You decide to attack");
+
+        // Loop starts here: Loops through each attack until either reaches 0 in HP
         while (!gameEnded) {
 
             if ((counter % 2) == 0) {
-                //player.setHitPoints(player.Damage());
+
                 player.setHitPoints(player.takeDamage(20));
 
                 System.out.println("Round " + round + ": " + goblin.getName() + " hits " +
                         player.getName() + ", for 20HP Damage, " + player.getName() + " have " +
                         player.getHitPoints() + "HP left");
             }
+
             if (counter % 2 == 1) {
-                //goblin.setHitPoints(goblin.Damage());
+
                 goblin.setHitPoints(goblin.takeDamage(20));
 
                 System.out.println("Round " + round + ": " + player.getName() + " hits " +
                         goblin.getName() + ", for 20HP Damage, " + goblin.getName() + " has " +
                         goblin.getHitPoints() + "HP left");
             }
+
             counter++;
             round++;
 
+            // If either reaches 0HP, the game has now ended
             if (player.getHitPoints() <= 0 || goblin.getHitPoints() <= 0) {
                 gameEnded = true;
             }
-        }
+        } // Loop ends here
+
+        // When the game has ended, the winner is printed out
         if (gameEnded) {
             if (player.getHitPoints() == 0) {
                 System.out.println("Game has ended, Ghoul won");

@@ -18,7 +18,6 @@ class MainTest {
     @Test
     void testGameCharacterHP(){
         GameCharacter g = new GameCharacter("Caspian", 100);
-        //player.Damage();
         g.setHitPoints(g.takeDamage(30));
         assertEquals(70, g.getHitPoints());
     }
