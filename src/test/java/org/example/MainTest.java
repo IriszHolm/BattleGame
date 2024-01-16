@@ -12,15 +12,15 @@ class MainTest {
     }
     @Test
     void testGameCharacterName(){
-        GameCharacter player = new GameCharacter("Caspian", 50);
-        assertEquals("Caspian", player.getName());
+        GameCharacter g = new GameCharacter("Caspian", 100);
+        assertEquals("Caspian", g.getName());
     }
     @Test
     void testGameCharacterHP(){
-        GameCharacter player = new GameCharacter("Caspian", 50);
+        GameCharacter g = new GameCharacter("Caspian", 100);
         //player.Damage();
-        player.setHitPoints(player.Damage());
-        assertEquals(30, player.getHitPoints());
+        g.setHitPoints(g.takeDamage(30));
+        assertEquals(70, g.getHitPoints());
     }
 
 

@@ -1,11 +1,10 @@
 package org.example;
 
 public class GameCharacter {
-    //SuperKlass
-
     private String name;
     private int hitPoints;
-    private int takeDamage = 0;
+    private int damage;
+    //Före: private int damage = 0;
     public GameCharacter(String name, int hitPoints) {
         this.name = name;
         this.hitPoints = hitPoints;
@@ -19,8 +18,10 @@ public class GameCharacter {
     public void setHitPoints(int hitPoints) {
         this.hitPoints = hitPoints;
     } //Med denna kan man nu ändra hitPoints
-    public int Damage() {
-        this.takeDamage = 20;
-        return hitPoints - takeDamage;
+    public int takeDamage(int damage) {
+        this.damage = damage;
+        //Före: this.damage = 20;
+        return hitPoints - damage;
     }
+
 }
