@@ -4,9 +4,25 @@ import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
+        // Default weapon
+        Weapon weapon = new Weapon("Sword", 30);
+        Weapon weapon2 = new Weapon("Axe", 50);
 
-        GameCharacter player = new GameCharacter("Player", 100);
-        GameCharacter goblin = new GameCharacter("Ghoul", 100);
+
+        //GameCharacter player = new GameCharacter("Player", 100);
+        //GameCharacter goblin = new GameCharacter("Ghoul", 100);
+        GameCharacter player = new Player("Player", 100, weapon);
+        GameCharacter goblin = new Npc("Ghoul", 100, weapon);
+        System.out.println("Weapon: " + goblin.equippedWeapon.getWName() + ", Damage: "+ goblin.equippedWeapon.getWDamage());
+        System.out.println(goblin.getWeapon(/*name, damage*/));
+        System.out.println(goblin.setWeapon(weapon2));
+        System.out.println("Weapon: " + goblin.equippedWeapon.getWName() + ", Damage: "+ goblin.equippedWeapon.getWDamage());
+
+
+
+        System.exit(0);
+
+
         // I'll give both 100HP so that the chance of winning is equal
         // If the computer has 50HP, its HP can end at -10HP, which doesn't look very good
 
