@@ -14,8 +14,8 @@ public class Main {
         GameCharacter player = new Player("Player", 100, weapon);
         GameCharacter goblin = new Npc("Ghoul", 100, weapon);
         System.out.println("Weapon: " + goblin.equippedWeapon.getWName() + ", Damage: "+ goblin.equippedWeapon.getWDamage());
-        System.out.println(goblin.getWeapon(/*name, damage*/));
-        System.out.println(goblin.setWeapon(weapon2));
+        System.out.println(goblin.getWeapon().getWName());
+        goblin.setWeapon(weapon2);
         System.out.println("Weapon: " + goblin.equippedWeapon.getWName() + ", Damage: "+ goblin.equippedWeapon.getWDamage());
 
 
