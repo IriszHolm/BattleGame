@@ -16,4 +16,24 @@ class GameCharacterTest {
         GameCharacter g = new Player("Caspian", 100);
         g.setHitPoints(g.takeDamage(30));
         assertEquals(70, g.getHitPoints());
-    }}
+    }
+    @Test
+    void testGameCharacterINS(){
+        Weapon weapon = new Weapon("Sword", 20);
+        GameCharacter player = new Player("Iris", 100, weapon, 0.8);
+        GameCharacter npc = new Npc("Npc", 100, weapon, 0.8);
+
+        // Attack Tests
+        assertEquals("Sword", npc.getWeapon().getWName());
+
+        player.attack(npc);
+        assertEquals(100, player.getHitPoints()); // Player HP is still 100
+        assertNotEquals(100, npc.getHitPoints()); // NPC has lost HP
+
+        npc.attack(player);
+        assertNotEquals(100, player.getHitPoints()); // Player has been attacked
+
+
+    }
+
+}

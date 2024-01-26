@@ -11,5 +11,4 @@ class MainTest {
         assertTrue(true);
     }
 
-
 }
