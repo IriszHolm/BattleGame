@@ -1,6 +1,7 @@
 package org.example;
 
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 // Represents a gameCharacter with different attributes and methods than can be used
 abstract public class GameCharacter {
@@ -52,9 +53,12 @@ abstract public class GameCharacter {
 
     // Method that lets a player attack another player
     public int attack(GameCharacter defender){
-        Random dexterityRand = new Random();
-        double num = dexterityRand.nextDouble(dexterity, 1.0);
-        double weaponDamage = Math.round(equippedWeapon.getWDamage() * num);
+        // Detta failar hela git
+        //double randomDext = dexterity + (Math.random() * (1.0 - dexterity +1.0)) + dexterity;
+        double randomDext = ThreadLocalRandom.current().nextDouble(dexterity, 1.0);
+        //Random dexterityRand = new Random();
+        //double num = dexterityRand.nextDouble(dexterity, 1.0);
+        double weaponDamage = Math.round(equippedWeapon.getWDamage() * randomDext);
         double remainingHP = defender.hitPoints - weaponDamage;
         defender.setHitPoints((int)remainingHP);
         return (int)weaponDamage;

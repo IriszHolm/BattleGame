@@ -29,10 +29,10 @@ public class Main {
         System.out.println("Goblin Weapon: " + goblin.equippedWeapon.getWName() + ", Damage: "+ goblin.equippedWeapon.getWDamage());
         System.out.println("Player Weapon: " + player.equippedWeapon.getWName() + ", Damage: "+ player.equippedWeapon.getWDamage());
 
-        //System.out.println("Attack damage: " + player.attack(goblin));
-        //System.out.println("Goblin's HP after attack " + goblin.getHitPoints());
-        System.out.println("Attack damage: " + goblin.attack(player));
-        System.out.println("Player's HP after attack " + player.getHitPoints());
+        System.out.println("Player's Attack damage: " + player.attack(goblin));
+        System.out.println("Goblin's HP after attack " + goblin.getHitPoints());
+        //System.out.println("Attack damage: " + goblin.attack(player));
+        //System.out.println("Player's HP after attack " + player.getHitPoints());
 
 
 
