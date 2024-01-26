@@ -53,7 +53,7 @@ abstract public class GameCharacter {
     // Method that lets a player attack another player
     public int attack(GameCharacter defender){
         Random dexterityRand = new Random();
-        double num = dexterityRand.nextDouble(dexterity, 1);
+        double num = dexterityRand.nextDouble(dexterity, 1.0);
         double weaponDamage = Math.round(equippedWeapon.getWDamage() * num);
         double remainingHP = defender.hitPoints - weaponDamage;
         defender.setHitPoints((int)remainingHP);
