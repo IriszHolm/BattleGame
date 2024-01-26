@@ -46,14 +46,12 @@ abstract public class GameCharacter {
     }
 
     // Method that lets a player attack another player
-
-    /*public int attack(GameCharacter defender){
-    // HP minska med anfallarens vapens damage
-        defender.setHitPoints(DEN SOM SLÅR.equippedWeapon.getWDamage());
-        return // attackens stryka
+    public int attack(GameCharacter defender){
+        int remainingHP = defender.hitPoints - equippedWeapon.getWDamage();
+        defender.setHitPoints(remainingHP);
+        return equippedWeapon.getWDamage();
     }
 
-     */
 
 
     //abstract void mend();

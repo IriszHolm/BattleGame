@@ -6,23 +6,27 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-       int chosenInteger = Utils.getIntInput();
-       System.out.println(chosenInteger);
+       //int chosenInteger = Utils.getIntInput();
+       //System.out.println(chosenInteger);
 
 
         // Weapons
         Weapon weapon = new Weapon("Sword", 30);
-        Weapon weapon2 = new Weapon("Axe", 50);
+        Weapon weapon2 = new Weapon("Axe", 40);
 
 
-        //GameCharacter player = new GameCharacter("Player", 100);
-        //GameCharacter goblin = new GameCharacter("Ghoul", 100);
         GameCharacter player = new Player("Player", 100, weapon);
         GameCharacter goblin = new Npc("Ghoul", 100, weapon);
+
         System.out.println("Weapon: " + goblin.equippedWeapon.getWName() + ", Damage: "+ goblin.equippedWeapon.getWDamage());
         System.out.println(goblin.getWeapon().getWName());
         goblin.setWeapon(weapon2);
-        System.out.println("Weapon: " + goblin.equippedWeapon.getWName() + ", Damage: "+ goblin.equippedWeapon.getWDamage());
+        System.out.println("Goblin Weapon: " + goblin.equippedWeapon.getWName() + ", Damage: "+ goblin.equippedWeapon.getWDamage());
+        System.out.println("Player Weapon: " + player.equippedWeapon.getWName() + ", Damage: "+ player.equippedWeapon.getWDamage());
+
+        System.out.println("Attack damage: " + goblin.attack(player));
+        System.out.println("Player's HP after attack " + player.getHitPoints());
+
 
 
 
