@@ -1,9 +1,12 @@
 package org.example;
 
+import java.util.Random;
+
 // Represents a gameCharacter with different attributes and methods than can be used
 abstract public class GameCharacter {
     private String name;
     private int hitPoints;
+    double dexterity;
     Weapon equippedWeapon;
 
     public GameCharacter(String name, int hitPoints) {
@@ -11,12 +14,14 @@ abstract public class GameCharacter {
         this.name = name;
         this.hitPoints = hitPoints;
     }
-    public GameCharacter(String name, int hitPoints, Weapon equippedWeapon) {
+    public GameCharacter(String name, int hitPoints, Weapon equippedWeapon, double dexterity) {
         // Incapsulated attributes
         this.name = name;
         this.hitPoints = hitPoints;
         this.equippedWeapon = equippedWeapon;
+        this.dexterity = dexterity;
     }
+
 
     public String getName(){
         return name;
@@ -47,9 +52,12 @@ abstract public class GameCharacter {
 
     // Method that lets a player attack another player
     public int attack(GameCharacter defender){
-        int remainingHP = defender.hitPoints - equippedWeapon.getWDamage();
-        defender.setHitPoints(remainingHP);
-        return equippedWeapon.getWDamage();
+        Random dexterityRand = new Random();
+        double num = dexterityRand.nextDouble(dexterity, 1);
+        double weaponDamage = Math.round(equippedWeapon.getWDamage() * num);
+        double remainingHP = defender.hitPoints - weaponDamage;
+        defender.setHitPoints((int)remainingHP);
+        return (int)weaponDamage;
     }
 
 

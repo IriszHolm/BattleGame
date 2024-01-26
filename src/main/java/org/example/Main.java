@@ -9,21 +9,28 @@ public class Main {
        //int chosenInteger = Utils.getIntInput();
        //System.out.println(chosenInteger);
 
+        // Skapa en vapenShop där player kan välja och goblin få något random.
+        // Minimum damage=20, Maximum damage=40
+        int randomDamagePoints = (int)Math.floor((Math.random() * (40 - 20 + 1)))+ 20;
+
 
         // Weapons
-        Weapon weapon = new Weapon("Sword", 30);
-        Weapon weapon2 = new Weapon("Axe", 40);
+        Weapon weapon = new Weapon("Sword", 20);
+        Weapon weaponG = new Weapon("Sledgehammer", randomDamagePoints);
+        //Weapon weapon2 = new Weapon("Axe", 30);
 
 
-        GameCharacter player = new Player("Player", 100, weapon);
-        GameCharacter goblin = new Npc("Ghoul", 100, weapon);
+        GameCharacter player = new Player("Player", 100, weapon, 0.8);
+        GameCharacter goblin = new Npc("Ghoul", 100, weaponG, 0.5);
 
         System.out.println("Weapon: " + goblin.equippedWeapon.getWName() + ", Damage: "+ goblin.equippedWeapon.getWDamage());
         System.out.println(goblin.getWeapon().getWName());
-        goblin.setWeapon(weapon2);
+        //goblin.setWeapon(weapon2);
         System.out.println("Goblin Weapon: " + goblin.equippedWeapon.getWName() + ", Damage: "+ goblin.equippedWeapon.getWDamage());
         System.out.println("Player Weapon: " + player.equippedWeapon.getWName() + ", Damage: "+ player.equippedWeapon.getWDamage());
 
+        //System.out.println("Attack damage: " + player.attack(goblin));
+        //System.out.println("Goblin's HP after attack " + goblin.getHitPoints());
         System.out.println("Attack damage: " + goblin.attack(player));
         System.out.println("Player's HP after attack " + player.getHitPoints());
 
