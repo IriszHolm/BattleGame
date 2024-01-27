@@ -1,6 +1,7 @@
 package org.example;
 
 public class Weapon {
+    // Weapon class returns the weapons name and damage
     private String name;
     private int damage;
 

@@ -1,6 +1,7 @@
 package org.example;
 
 public class Npc extends GameCharacter{
+    // Npc is a Subclass to GameCharacter
 
     public Npc(String name, int hitPoints) {
         super(name, hitPoints);
