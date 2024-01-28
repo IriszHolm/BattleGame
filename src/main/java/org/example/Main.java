@@ -40,6 +40,8 @@ public class Main {
 
             System.out.printf("Welcome brave warrior! " + BOLD + "Enter your name: " + NO_BOLD);
             userName = strINP.nextLine();
+            Utils.getStringInput(userName); // Checks for valid userName
+
             System.out.println("A scary-looking Ghoul runs towards you. You decide to attack");
 
             // Loop starts here: Loops through each attack until either reaches 0 in HP
