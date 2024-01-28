@@ -39,8 +39,8 @@ public class Main {
             int round = 1;
 
             System.out.printf("Welcome brave warrior! " + BOLD + "Enter your name: " + NO_BOLD);
-            userName = strINP.nextLine();
-            Utils.getStringInput(userName); // Checks for valid userName
+            String userNameT = strINP.nextLine();
+            userName = Utils.getStringInput(userNameT); // Checks for valid userName
 
             System.out.println("A scary-looking Ghoul runs towards you. You decide to attack");
 
