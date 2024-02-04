@@ -65,18 +65,16 @@ public class Main {
                                 W.getWDamage());
                     }
                    // System.out.println(BOLD + "Attack (Enter) or flee (q)?" + NO_BOLD);
-                    System.out.println(BOLD + "Choose weapon for Attack (1-3) or flee (q)?" + NO_BOLD);
+                    System.out.println(BOLD + "\nChoose weapon for Attack ("+1+"-"+inventory.getWeapons().size()+") or flee (q)?" + NO_BOLD);
                     String userStrINP = strINP.nextLine();
 
-                    Weapon chosenWep = inventory.chooseWeapon();
-                    player.setWeapon(chosenWep);
+                    Weapon chosenWep;
+                    if (userStrINP.equals("[0-9]+")){
+                        chosenWep = inventory.chooseWeapon(); 
+                        player.setWeapon(chosenWep);
+                   }
 
-                    System.out.println(chosenWep.getWName() + " " + chosenWep.getWDamage());
-                    System.out.println(player1.inventory.size());
-                    System.exit(0);
-
-
-
+                    //System.exit(0);
 
                     // Player decides if they want to end the game or continue
                     if (userStrINP.equals("q")) {

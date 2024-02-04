@@ -5,16 +5,21 @@ import java.util.Scanner;
 public class Utils {
 
     // Method that asks for an Integer from the user
+
     static int getIntInput(String prompt){
+
         Scanner console = new Scanner(System.in);
         while (true) {
             try {
                 //System.out.print(prompt + ": ");
                 return Integer.parseInt(console.nextLine());
+                //return Integer.parseInt(string);
+
             } catch (NumberFormatException e) {
                 System.out.println("Submit an Integer!");
             }
         }
+    }
         /*
         int value;
         Scanner intInput = new Scanner(System.in);
@@ -22,8 +27,8 @@ public class Utils {
 
         while (true)
             try {
-                System.out.println("Submit an Integer");
-                int userIntInput = Integer.parseInt(strInput.nextLine());
+               // System.out.println("Choose weapon for Attack (1-3) or flee (q)?");
+                int userIntInput = Integer.parseInt(val);
                 value = userIntInput;
                 break;
 
@@ -32,11 +37,11 @@ public class Utils {
             } catch (Exception e){
                     System.out.println("Something went wrong");
             }
-        return value;*/
-    }
-    static int getIntInput() {
+        return value;
+    }*/
+   /* static int getIntInput() {
         return getIntInput("Submit an Integer");
-    }
+    }*/
 
 
 
