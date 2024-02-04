@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -11,6 +12,7 @@ abstract public class GameCharacter {
     private int hitPoints;
     double dexterity;
     Weapon equippedWeapon;
+    ArrayList<Weapon> inventory;
 
     public GameCharacter(String name, int hitPoints) {
         // Encapsulated attributes
@@ -23,6 +25,14 @@ abstract public class GameCharacter {
         this.hitPoints = hitPoints;
         this.equippedWeapon = equippedWeapon;
         this.dexterity = dexterity;
+    }
+    public GameCharacter(String name, int hitPoints, Weapon equippedWeapon, double dexterity, ArrayList<Weapon> inventory) {
+        // Encapsulated attributes
+        this.name = name;
+        this.hitPoints = hitPoints;
+        this.equippedWeapon = equippedWeapon;
+        this.dexterity = dexterity;
+        this.inventory = inventory;
     }
 
     public String getName(){
@@ -58,15 +68,25 @@ abstract public class GameCharacter {
         double num = Math.floor(Math.random() * (max - min + 1) + min);
         double remainingHP = defender.hitPoints - num;
         defender.setHitPoints((int)remainingHP);
-        /*
-        // Randomizes the dexterity
-        double randomDexterity = ThreadLocalRandom.current().nextDouble(dexterity, 1.0);
-        double weaponDamage = Math.round(equippedWeapon.getWDamage() * randomDexterity);
-        // Subtracts the damage from the defender's hitPoints
-        double remainingHP = defender.hitPoints - weaponDamage;
-        defender.setHitPoints((int)remainingHP);
-         */
+
         return (int)num;
     }
+
+    // Method that restores health to max 100hp
+    public int heal(){
+        Random rand = new Random();
+        int health = rand.nextInt(hitPoints, 100);
+        setHitPoints(hitPoints + health);
+        return hitPoints + health;
+
+        // Alltså i Main ska denna komma ut randomly, t.ex.
+        // att en potion health potion hittas random i koden.
+
+    }
+
+    // ArrayList of weapons
+
+
+
 
 }

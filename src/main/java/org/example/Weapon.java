@@ -16,5 +16,13 @@ public class Weapon {
         return damage;
     }
 
+    public static String[] getNpcWeaponName() {
+        return npcWeaponName;
+    }
+
+    static String[] npcWeaponName = {"Sword",  "Sledgehammer", "Axe", "Torch", "Knife"};
+
+
+
 
 }
