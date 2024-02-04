@@ -17,7 +17,7 @@ public class WeaponInventory {
     }
 
     public Weapon chooseWeapon(){
-        int chosenWeapon = Utils.getIntInput("Vhoose");
+        int chosenWeapon = Utils.getIntInput("Choose");
         while (true){
             try{
                 return weapons.get(chosenWeapon);

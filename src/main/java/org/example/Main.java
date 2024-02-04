@@ -29,16 +29,23 @@ public class Main {
 
 
         WeaponInventory inventory = new WeaponInventory();
-        inventory.addInventory(new Weapon("Sword", 20));
+        inventory.addInventory(new Weapon("Empty", 0));
+        inventory.addInventory(weapon);
         inventory.addInventory(new Weapon("PickAxe", 22));
         inventory.addInventory(new Weapon("Arrow", 21));
 
+        WeaponInventory inventoryG = new WeaponInventory();
+        inventory.addInventory(weaponG);
+
+        // Ska inve tory månne bestå av ens ena weapon bara?
 
         // Characters
-        GameCharacter player = new Player("Player", 100, weapon, 0.8);
-        GameCharacter player1 = new Player("Player", 100, weapon, 0.8, inventory.getWeapons());
+        GameCharacter player1 = new Player("Player", 100, weapon, 0.8);
+        GameCharacter player = new Player("Player", 100, weapon, 0.8, inventory.getWeapons());
 
-        GameCharacter goblin = new Npc("Ghoul", 80, weaponG, 0.5);
+        GameCharacter goblin1 = new Npc("Ghoul", 80, weaponG, 0.5);
+        GameCharacter goblin = new Npc("Ghoul", 80, weaponG, 0.5, inventoryG.getWeapons());
+
 
         // Battle Game begins
         while(!isEnded) {
@@ -57,24 +64,23 @@ public class Main {
                 if ((counter % 2) == 0) {
                     System.out.println("--- Inventory ---");
 
-                    for (int i = 0; i < inventory.getWeapons().size(); i++) {
+                    for (int i = 1; i < inventory.getWeapons().size(); i++) {
                         Weapon W = inventory.getWeapons().get(i);
                         System.out.printf("[%d] %s (%d)\n",
                                 i,
                                 W.getWName(),
                                 W.getWDamage());
                     }
-                   // System.out.println(BOLD + "Attack (Enter) or flee (q)?" + NO_BOLD);
-                    System.out.println(BOLD + "\nChoose weapon for Attack ("+1+"-"+inventory.getWeapons().size()+") or flee (q)?" + NO_BOLD);
-                    String userStrINP = strINP.nextLine();
 
+                    System.out.println(BOLD + "\nChoose weapon for Attack (" + 1 + "-" + (inventory.getWeapons().size()-1) + ") or flee (q)?" + NO_BOLD);
+                    String userStrINP = strINP.nextLine(); //hit sparas q
+
+                    // Frågar två gånger ÅÅÅHHHH
                     Weapon chosenWep;
-                    if (userStrINP.equals("[0-9]+")){
+                    if (userStrINP.matches("^[0-9]+$")){
                         chosenWep = inventory.chooseWeapon(); 
                         player.setWeapon(chosenWep);
                    }
-
-                    //System.exit(0);
 
                     // Player decides if they want to end the game or continue
                     if (userStrINP.equals("q")) {
@@ -115,6 +121,14 @@ public class Main {
                 }
                 if (goblin.getHitPoints() <= 0 ){
                     System.out.println("\nGame has ended, " + userName +" won with "  + player.getHitPoints() + "HP left");
+                    System.out.println(goblin.getName() + "dropped: " + goblin.getWeapon().getWName());
+                    System.out.println("Add to inventory? (a) or continue? (Enter)");
+                    String userStrINP = strINP.nextLine();
+                    if (userStrINP.equals("a")){
+                        // INGEN ANIN OM DETTA EN FUNKAR
+                        inventory.addInventory(goblin.getWeapon());
+                        System.out.println(goblin.getWeapon().getWName() + " Added");
+                    }
                 }
 
                 System.out.printf( YELLOW + "Want to try again? " + NO_YELLOW + BOLD +"yes/no "+ NO_BOLD);

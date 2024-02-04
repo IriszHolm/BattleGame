@@ -13,6 +13,11 @@ public class Npc extends GameCharacter{
     public Npc(String name, int hitPoints, Weapon weapon, double dexterity) {
         super(name, hitPoints,weapon, dexterity);
     }
+    public Npc(String name, int hitPoints, Weapon weapon, double dexterity, ArrayList<Weapon> inventory
+    ) {
+        super(name, hitPoints,weapon, dexterity, inventory);
+    }
+
 
     // Static factory method for random Weapon name and kind (and damage)
     public static Npc SpawnNpc(int hitPoints, double dexterity){

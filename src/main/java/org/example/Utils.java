@@ -7,13 +7,11 @@ public class Utils {
     // Method that asks for an Integer from the user
 
     static int getIntInput(String prompt){
-
         Scanner console = new Scanner(System.in);
         while (true) {
             try {
                 //System.out.print(prompt + ": ");
                 return Integer.parseInt(console.nextLine());
-                //return Integer.parseInt(string);
 
             } catch (NumberFormatException e) {
                 System.out.println("Submit an Integer!");
