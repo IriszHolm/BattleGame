@@ -10,7 +10,7 @@ public class Utils {
         Scanner console = new Scanner(System.in);
         while (true) {
             try {
-                //System.out.print(prompt + ": ");
+                System.out.print(prompt + ": ");
                 String input = console.nextLine();
                 return Integer.parseInt(input);
 
@@ -19,25 +19,23 @@ public class Utils {
             }
         }
     }
-        /*
-        int value;
-        Scanner intInput = new Scanner(System.in);
-        Scanner strInput = new Scanner(System.in);
-
+    static String getIntInp(String val){
         while (true)
             try {
-               // System.out.println("Choose weapon for Attack (1-3) or flee (q)?");
-                int userIntInput = Integer.parseInt(val);
-                value = userIntInput;
-                break;
-
+                if (val.equals("q")){
+                    return val;
+                }
+                if (!val.equals("q")){
+                    //int userIntInput = Integer.parseInt(val);
+                    return null;
+                }
             } catch (NumberFormatException | NullPointerException e){
                     System.out.println("You have to submit an Integer");
             } catch (Exception e){
                     System.out.println("Something went wrong");
             }
-        return value;
-    }*/
+    }
+
    /* static int getIntInput() {
         return getIntInput("Submit an Integer");
     }*/

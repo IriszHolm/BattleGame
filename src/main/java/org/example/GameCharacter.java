@@ -1,10 +1,11 @@
 package org.example;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
-abstract public class GameCharacter {
+abstract public class GameCharacter implements Serializable {
     // Super Class
     // Represents a gameCharacter with different attributes and methods than can be used in game
 
@@ -70,6 +71,10 @@ abstract public class GameCharacter {
         defender.setHitPoints((int)remainingHP);
 
         return (int)num;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     // Method that restores health to max 100hp
