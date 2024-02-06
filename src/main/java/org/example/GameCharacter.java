@@ -55,6 +55,11 @@ abstract public class GameCharacter implements Serializable {
         this.hitPoints = hitPoints;
     }
 
+    // You can subtract damage from the players hitPoints
+    public int takeDamage(int damage) {
+        return hitPoints - damage;
+    }
+
     public Weapon getWeapon() {
         return equippedWeapon;
     }
