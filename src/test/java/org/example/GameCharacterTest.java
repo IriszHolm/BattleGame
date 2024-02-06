@@ -45,4 +45,24 @@ class GameCharacterTest {
 
     }
 
+    @Test
+    void testSave(){
+        String saveFile = "player.save";
+        WeaponInventory inventory = new WeaponInventory();
+        Weapon weapon = new Weapon("Axe", 25);
+        inventory.addInventory(weapon);
+
+        GameCharacter player;
+        player = new Player("Player", 100, weapon, 0.8, inventory.getWeapons());
+        FileUtils.saveObject(player, saveFile);
+        GameCharacter playerS = (Player) FileUtils.loadObject(saveFile);
+
+        assertEquals(player.getName(), playerS.getName());
+        assertEquals(player.getHitPoints(), playerS.getHitPoints());
+        //assertEquals(player.getWeapon(), playerS.getWeapon()); // funkar ej
+        System.out.println(playerS.getWeapon().getWDamage());
+        System.out.println(player.getWeapon().getWDamage());
+
+    }
+
 }

@@ -39,6 +39,10 @@ abstract public class GameCharacter implements Serializable {
     public String getName(){
         return name;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
     public int getHitPoints(){
         return hitPoints;
     }
@@ -62,6 +66,7 @@ abstract public class GameCharacter implements Serializable {
         return equippedWeapon;
     }
 
+
     // Method that lets a player attack another player with randomized attack damage
     public int attack(GameCharacter defender){
         double min = dexterity * equippedWeapon.getWDamage();
@@ -73,24 +78,16 @@ abstract public class GameCharacter implements Serializable {
         return (int)num;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     // Method that restores health to max 100hp
     public int heal(){
         Random rand = new Random();
-        int health = rand.nextInt(hitPoints, 100);
-        setHitPoints(hitPoints + health);
-        return hitPoints + health;
+        int health = rand.nextInt(15, 100-hitPoints);
+        int newHealth = hitPoints + health;
+        setHitPoints(newHealth);
 
-        // Alltså i Main ska denna komma ut randomly, t.ex.
-        // att en potion health potion hittas random i koden.
+        return newHealth;
 
     }
-
-    // ArrayList of weapons
-
 
 
 

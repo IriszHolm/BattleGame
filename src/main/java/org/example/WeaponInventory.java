@@ -1,10 +1,10 @@
 package org.example;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class WeaponInventory {
+public class WeaponInventory implements Serializable {
 
-    // Eller hämtas den från GameCharacter??
     private ArrayList<Weapon> weapons = new ArrayList<>();
 
     public void addInventory(Weapon weapon) {
@@ -23,18 +23,16 @@ public class WeaponInventory {
         Weapon chosenWeapon;
         while (true) {
             try {
-                // chosenWeapon = Utils.getIntInput("Choose");
-                // Om vapen är inom arrayen --> vidare, annars out of bounds
-
                 chosenWeapon = weapons.get(weaponIndex);
                 break;
             } catch (Exception e) {
                 weaponIndex = Utils.getIntInput("No such weapon, try again.");
             }
-
         }
         return chosenWeapon;
     }
+
+
 
 }
 

@@ -1,8 +1,9 @@
 package org.example;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Player extends GameCharacter{
+public class Player extends GameCharacter implements Serializable {
     // Player is a Subclass to GameCharacter
 
     public Player(String name, int hitPoints) {
