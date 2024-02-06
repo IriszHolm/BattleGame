@@ -1,6 +1,5 @@
 package org.example;
 
-import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -26,21 +25,13 @@ public class Main {
 
         // Creating Weapons & Inventory
         Weapon weapon = new Weapon("Sword", 20);
-        /*
-        //WeaponInventory inventory = new WeaponInventory();
-        inventory.addInventory(new Weapon("Empty", 0));
-        inventory.addInventory(weapon);
-        inventory.addInventory(new Weapon("PickAxe", 22));
-         */
         ArrayList<Weapon> inventory = new ArrayList<>();
-        inventory.add(new Weapon ("Empty", 0));
+        inventory.add(new Weapon("Empty", 0));
         inventory.add(weapon);
         inventory.add(new Weapon("PickAxe", 22));
 
 
         // SAVE FILE FUNCTIONS
-
-        // Savear inte inventory/Weapon, men namn och annat!
         String saveFile = "player.save";
         GameCharacter player;
         String gameInp;
@@ -61,13 +52,11 @@ public class Main {
         }
         if (player == null) {
             System.out.println("Creates new player");
-           // player = new Player("Player", 100, weapon, 0.8, inventory.getWeapons());
             player = new Player("Player", 100, weapon, 0.8, inventory);
 
 
             System.out.printf("Welcome brave warrior! " + BOLD + "Enter your name: " + NO_BOLD);
             String userName = strINP.nextLine();
-            //userName = Utils.getStringInput(userNameT); // Checks for valid userName
             player.setName(Utils.getStringInput(userName));
         }
 
@@ -79,8 +68,7 @@ public class Main {
             int round = 1;
 
 
-            System.out.println("A scary-looking " + goblin.getName() + " runs towards you. You decide to attack");
-            //System.out.println(goblin.inventory.get;
+            System.out.println("\nA scary-looking " + goblin.getName() + " runs towards you. You decide to attack");
 
             // Loop starts here: Loops through each attack until either reaches 0 in HP
             outerloop:
@@ -90,7 +78,6 @@ public class Main {
                     System.out.println("--- Inventory ---");
 
                     for (int i = 1; i < player.inventory.size(); i++) {
-                        //Weapon W = inventory.getWeapons().get(i);
                         Weapon W = player.inventory.get(i);
                         System.out.printf("[%d] %s (%d)\n",
                                 i,
@@ -98,10 +85,10 @@ public class Main {
                                 W.getWDamage());
                     }
 
-                    innerloop: while (true) { //loop.3 Choose wrong --> repeat choose weapon meny
+                    innerloop:
+                    while (true) { //loop.3 Choose wrong --> repeat choose weapon meny
                         System.out.println(BOLD + "\nChoose weapon for Attack (" + 1 + "-" + (player.inventory.size() - 1) + ") or flee (q)?" + NO_BOLD);
-                        String userStrINP = strINP.nextLine(); //hit sparas q
-                        Weapon chosenWep;
+                        String userStrINP = strINP.nextLine();
 
                         // Player decides if they want to end the game or continue
                         if (userStrINP.equals("q")) {
@@ -110,28 +97,17 @@ public class Main {
                             break outerloop; // Jumps out of inner and outerloop
 
                         } else if (userStrINP.matches("^[0-9]+$")) {
-                            //chosenWep = inventory.chooseWeapon(Integer.parseInt(userStrINP));
                             int i = Integer.parseInt(userStrINP);
-                            while(true){
-                            try {
-                                player.inventory.get(i);
-                                break innerloop;
-                            } catch (Exception e) {
-                                i = Utils.getIntInput("No such weapon, try again.");
+                            while (true) {
+                                try {
+                                    player.setWeapon(player.inventory.get(i));
+                                    break innerloop;
+                                } catch (Exception e) {
+                                    i = Utils.getIntInput("No such weapon, try again.");
+                                }
                             }
-                            }
 
-                           /* if (Integer.parseInt(userStrINP) > player.inventory.size()){
-                                // Metod som loopar igenom till du får ett nummer som existerar
-                                System.out.println("Out of bounds, try again:");
 
-                            } else if (Integer.parseInt(userStrINP) <= player.inventory.size()){
-                            chosenWep = player.inventory.get(Integer.parseInt(userStrINP));
-                            // Detta tar direkt, men blir error om out of bounds
-                            player.setWeapon(chosenWep);
-                            break;}
-
-                            */
                         } else {
                             System.out.println("You were too slow... Choose again");
                         }
@@ -172,11 +148,9 @@ public class Main {
                     System.out.println("\nGame has ended, " + player.getName() + " won with " + player.getHitPoints() + "HP left");
                     System.out.println(goblin.getName() + " dropped: " + goblin.getWeapon().getWName() + " (" + goblin.getWeapon().getWDamage() + ")");
                     System.out.println("Add to inventory? (a) or continue? (Enter)");
-                   // String userStrINP = strINP.nextLine();
-                    String userStrINP=Utils.getStringInput(strINP.nextLine());
+                    String userStrINP = Utils.getStringInput(strINP.nextLine());
 
                     if (userStrINP.equals("a")) {
-                        //inventory.addInventory(goblin.getWeapon()); // SÅ att indexet uppdateras
                         player.inventory.add(goblin.getWeapon());
                         System.out.println(goblin.getWeapon().getWName() + " Added");
                     }
@@ -186,13 +160,13 @@ public class Main {
                     int num = random.nextInt(1, 2);
                     if (1 == num) {
                         System.out.println(GREEN + "You found a healing potion! " + NO_GREEN);
-                        System.out.println("Your HP got raised by "+ GREEN + player.heal() + NO_GREEN +"HP");
+                        System.out.println("Your HP got raised by " + GREEN + player.heal() + NO_GREEN + "HP");
                     }
                 }
 
                 System.out.printf(YELLOW + "Want to try again? " + NO_YELLOW + BOLD + "yes/no " + NO_BOLD);
-                noYes = strINP.nextLine();
-                Utils.getStringInput(noYes);
+                noYes = Utils.getStringInput(strINP.nextLine());
+
                 if (noYes.equals("yes")) {
                     isEnded = false;
                     goblin = Npc.SpawnNpc(80, 0.5);

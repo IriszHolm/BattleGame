@@ -18,6 +18,7 @@ public class Weapon implements Serializable {
         return damage;
     }
 
+    // Names for the randomized npc
     public static String[] getNpcWeaponName() {
         return npcWeaponName;
     }
