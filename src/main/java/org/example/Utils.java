@@ -11,7 +11,8 @@ public class Utils {
         while (true) {
             try {
                 //System.out.print(prompt + ": ");
-                return Integer.parseInt(console.nextLine());
+                String input = console.nextLine();
+                return Integer.parseInt(input);
 
             } catch (NumberFormatException e) {
                 System.out.println("Submit an Integer!");

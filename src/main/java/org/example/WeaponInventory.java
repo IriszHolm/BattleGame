@@ -17,9 +17,10 @@ public class WeaponInventory {
     }
 
     public Weapon chooseWeapon(){
-        int chosenWeapon = Utils.getIntInput("Choose");
+
         while (true){
             try{
+                int chosenWeapon = Utils.getIntInput("Choose");
                 return weapons.get(chosenWeapon);
             } catch (Exception e){
                 System.out.println("Out of bounds");

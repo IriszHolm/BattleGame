@@ -32,7 +32,6 @@ public class Main {
         inventory.addInventory(new Weapon("Empty", 0));
         inventory.addInventory(weapon);
         inventory.addInventory(new Weapon("PickAxe", 22));
-        inventory.addInventory(new Weapon("Arrow", 21));
 
         WeaponInventory inventoryG = new WeaponInventory();
         inventory.addInventory(weaponG);
@@ -77,10 +76,14 @@ public class Main {
 
                     // Frågar två gånger ÅÅÅHHHH
                     Weapon chosenWep;
-                    if (userStrINP.matches("^[0-9]+$")){
-                        chosenWep = inventory.chooseWeapon(); 
+                    chosenWep = inventory.chooseWeapon();
+                    player.setWeapon(chosenWep);
+                   /* if (userStrINP.matches("^[0-9]+$")){
+                        chosenWep = inventory.chooseWeapon();
                         player.setWeapon(chosenWep);
                    }
+                    */
+
 
                     // Player decides if they want to end the game or continue
                     if (userStrINP.equals("q")) {
@@ -124,6 +127,8 @@ public class Main {
                     System.out.println(goblin.getName() + "dropped: " + goblin.getWeapon().getWName());
                     System.out.println("Add to inventory? (a) or continue? (Enter)");
                     String userStrINP = strINP.nextLine();
+
+                    // Hålla koll på spelets rundor, randoisa ett numme mellan det om round = nuber == heal
                     if (userStrINP.equals("a")){
                         // INGEN ANIN OM DETTA EN FUNKAR
                         inventory.addInventory(goblin.getWeapon());

@@ -20,7 +20,7 @@ public class Npc extends GameCharacter{
 
 
     // Static factory method for random Weapon name and kind (and damage)
-    public static Npc SpawnNpc(int hitPoints, double dexterity){
+    public static GameCharacter SpawnNpc(int hitPoints, double dexterity){
         String[] npcNames = {"Skeleton", "Elon Musk", "Jeff Bezos", "Mark Zuckerberg", "Ed Sheeran"};
         Random rand = new Random();
 
@@ -29,7 +29,8 @@ public class Npc extends GameCharacter{
         String randomName = npcNames[rand.nextInt(npcNames.length)];
         Weapon randomWeapon = new Weapon(Weapon.getNpcWeaponName()[num], randomDamagePoints);
 
-        return new Npc(randomName, hitPoints, randomWeapon, dexterity);
+        return new Npc(randomName, hitPoints, randomWeapon, dexterity) {
+        };
 
     }
 }

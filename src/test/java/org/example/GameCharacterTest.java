@@ -33,6 +33,15 @@ class GameCharacterTest {
         npc.attack(player);
         assertNotEquals(100, player.getHitPoints()); // Player has been attacked
 
+    }
+    @Test
+    void testSpawnNpc(){
+        Weapon weapon = new Weapon("Sword", 20);
+        GameCharacter goblin = new Npc("Caspian", 100, weapon, 0.8);
+
+        goblin = Npc.SpawnNpc(80, 0.5);
+
+        assertInstanceOf(GameCharacter.class, goblin);
 
     }
 
