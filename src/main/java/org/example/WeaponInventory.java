@@ -18,7 +18,7 @@ public class WeaponInventory implements Serializable {
     public ArrayList<Weapon> getWeapons() {
         return weapons;
     }
-
+/*
     public Weapon chooseWeapon(int weaponIndex) {
         Weapon chosenWeapon;
         while (true) {
@@ -31,6 +31,8 @@ public class WeaponInventory implements Serializable {
         }
         return chosenWeapon;
     }
+
+ */
 
 
 

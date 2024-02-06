@@ -2,6 +2,8 @@ package org.example;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class GameCharacterTest {
@@ -48,20 +50,21 @@ class GameCharacterTest {
     @Test
     void testSave(){
         String saveFile = "player.save";
-        WeaponInventory inventory = new WeaponInventory();
+        ArrayList<Weapon> inventory = new ArrayList<>();
+        //WeaponInventory inventory = new WeaponInventory();
         Weapon weapon = new Weapon("Axe", 25);
-        inventory.addInventory(weapon);
+        inventory.add(weapon);
 
         GameCharacter player;
-        player = new Player("Player", 100, weapon, 0.8, inventory.getWeapons());
+        player = new Player("Player", 100, weapon, 0.8, inventory);
         FileUtils.saveObject(player, saveFile);
         GameCharacter playerS = (Player) FileUtils.loadObject(saveFile);
 
         assertEquals(player.getName(), playerS.getName());
         assertEquals(player.getHitPoints(), playerS.getHitPoints());
-        //assertEquals(player.getWeapon(), playerS.getWeapon()); // funkar ej
-        System.out.println(playerS.getWeapon().getWDamage());
-        System.out.println(player.getWeapon().getWDamage());
+
+        assertEquals(player.getWeapon().getWName(), playerS.getWeapon().getWName());
+        assertEquals(player.getWeapon().getWDamage(), playerS.getWeapon().getWDamage());
 
     }
 

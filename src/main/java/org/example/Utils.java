@@ -50,7 +50,7 @@ public class Utils {
         while (true)
         try {
             while (!userInp.matches("[a-zA-Z- ]+")){
-                System.out.printf("Please enter a valid name! ");
+                System.out.printf("Only use characters, please ");
                 userInp = strInput.nextLine();
             } break;
 
@@ -59,6 +59,25 @@ public class Utils {
 
         } return userInp;
     }
+
+    /*public Weapon chooseWeapon(int weaponIndex) {
+        Weapon chosenWeapon;
+        while (true) {
+            try {
+                //chosenWeapon = weapons.get(weaponIndex);
+                chosenWeapon = weaponIndex;
+                inventory.get(Integer.parseInt(weaponIndex);
+                break;
+            } catch (Exception e) {
+                weaponIndex = Utils.getIntInput("No such weapon, try again.");
+            }
+        }
+        return chosenWeapon;
+
+
+    }*/
+
 }
+
 
 
